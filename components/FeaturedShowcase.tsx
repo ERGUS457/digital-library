@@ -54,11 +54,30 @@ export default function FeaturedShowcase({
         {tereLiyeBooks.map((book) => (
           <div
             key={book.id}
-            className="flex flex-col justify-between p-3.5 rounded-xl bg-[#0e1b38]/90 border border-amber-400/20 hover:border-amber-400/70 hover:bg-[#14264e] transition-all duration-200 group"
+            className="flex flex-col justify-between p-3 rounded-2xl bg-[#0e1b38]/90 border border-amber-400/30 hover:border-amber-400/80 hover:bg-[#14264e] transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10"
           >
             <div>
-              <div className="h-1 w-8 rounded-full bg-amber-400 mb-2.5 group-hover:w-full transition-all duration-300" />
-              <h4 className="font-bold text-xs sm:text-sm text-white line-clamp-2 leading-snug group-hover:text-amber-300 transition-colors">
+              {/* Cover Thumbnail */}
+              <div
+                onClick={() => onRead(book)}
+                className="relative aspect-[3/4] w-full overflow-hidden rounded-xl bg-[#081226] border border-[#1b2f57] mb-2.5 cursor-pointer shadow-md group-hover:border-amber-400/50 transition-colors"
+              >
+                <img
+                  src={`https://lh3.googleusercontent.com/d/${book.id}=w400`}
+                  alt={book.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a142a]/80 via-transparent to-transparent opacity-40 group-hover:opacity-10 transition-opacity" />
+              </div>
+
+              <div className="h-0.5 w-6 rounded-full bg-amber-400 mb-2 group-hover:w-full transition-all duration-300" />
+              <h4
+                onClick={() => onRead(book)}
+                className="font-bold text-xs sm:text-sm text-white line-clamp-2 leading-snug group-hover:text-amber-300 transition-colors cursor-pointer"
+                title={book.title}
+              >
                 {book.title}
               </h4>
               <p className="text-[11px] text-slate-400 mt-1">Tere Liye</p>
@@ -66,9 +85,9 @@ export default function FeaturedShowcase({
 
             <button
               onClick={() => onRead(book)}
-              className="mt-3 w-full py-1.5 px-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-[#070d18] font-bold text-[11px] flex items-center justify-center gap-1 transition-colors"
+              className="mt-3 w-full py-1.5 px-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#070d18] font-bold text-xs flex items-center justify-center gap-1.5 transition-colors shadow-sm shadow-amber-400/20"
             >
-              <BookOpen className="w-3 h-3" />
+              <BookOpen className="w-3.5 h-3.5 stroke-[2.5]" />
               <span>Baca</span>
             </button>
           </div>
